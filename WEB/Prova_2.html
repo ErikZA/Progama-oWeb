@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prova 2</title>
+    <style>
+        #corpo {
+            font-family: "Raleway", sans-serif;
+            color: #000;
+            background-color: #f1f1f1;
+
+        }
+
+        #rodape {
+            color: #fff;
+            background-color: #616161;
+            padding-left: 0%;
+            padding-right: 0%;
+            margin-top: 16px;
+            padding: 0.01em 16px;
+            padding-top: 32px;
+            padding-bottom: 32px;
+        }
+
+        .span2{
+            background-color: rgb(190, 176, 176);
+            color: black;
+            display: inline-block;
+            padding-left: 8px;
+            padding-right: 8px;
+            text-align: center;
+            margin: 5px;
+        }
+
+        .div5{
+            padding-top: 5%;
+            padding-bottom: 4%
+
+        }
+
+        .bordas1{
+            padding: 8px 16px;
+            background-color:#616161;
+            text-align: left;
+            color: #000;
+        }
+
+        .span1 {
+            background-color: #000;
+            color: #fff;
+            display: inline-block;
+            padding-left: 8px;
+            padding-right: 8px;
+            text-align: center;
+        }
+
+        #span3 {
+            background-color: #000;
+            color: #fff;
+            display: inline-block;
+            padding-left: 8px;
+            padding-right: 8px;
+            text-align: center;
+            border-radius: 50%;
+        }
+
+        #topo {
+            padding: 0.01em 16px;
+            text-align: center;
+            padding-top: 32px;
+            padding-bottom: 32px;
+            padding-left: 0%;
+            padding-right: 0%;
+        }
+
+        #link1 {
+            color: white;
+        }
+
+        #btn1 {
+            color: #fff;
+            background-color: #000;
+            padding: 12px 24px;
+            margin-bottom: 16px;
+            cursor: not-allowed;
+            opacity: 0.3;
+            border: none;
+            display: inline-block;
+            vertical-align: middle;
+            overflow: hidden;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        #btn3 {
+            padding: 12px 24px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+            vertical-align: middle;
+            overflow: hidden;
+            text-decoration: #616161;
+            text-align: center;
+            color: #000;
+            background-color: #fff;
+            border: 2px solid black;
+            margin-left: 15%;
+        }
+
+        #btn1:hover {
+            background-color: #ccc;
+            color: white;
+        }
+
+        #btn2:hover {
+            background-color: rgba(204, 204, 204, 0.616);
+            color: white;
+        }
+
+        #btn3:hover {
+            background-color: rgba(204, 204, 204, 0.616);
+            color: white;
+        }
+
+        #btn2 {
+            color: #fff;
+            background-color: #000;
+            padding: 12px 24px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+            vertical-align: middle;
+            overflow: hidden;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        #sec1 {
+            width: 66.66666%;
+        }
+
+        #sec2 {
+            width: 33.33333%;
+        }
+
+        .flex-container {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .bordas {
+            box-shadow: 2px 2px 2px 2px gray;
+            margin-bottom: 5%;
+            margin-left: 1%;
+            margin-right: 3%;
+
+        }
+
+        #div2 {
+            margin: 3%
+        }
+
+        #txt1 {
+            margin: 3%;
+        }
+
+        img {
+            width: 100%;
+            vertical-align: middle;
+            box-sizing: inherit;
+        }
+
+        .flex-container1 {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .titulo1 {
+            font-weight: bold;
+        }
+
+        .sub1 {
+            opacity: 0.60;
+            box-sizing: inherit;
+        }
+
+        .divm {
+            margin-left: 67%;
+        }
+        
+        ul{
+            -webkit-padding-start: 0px;
+        }
+        li{
+            list-style-type:none;      
+            border: 1px solid rgba(0, 0, 0, 0.39); 
+            
+        }
+        li:hover {
+            background-color: rgba(204, 204, 204, 0.904);
+            color: white;
+        }
+
+        #list1{ 
+            width: 50px;
+            
+        }
+
+        .magem1{
+            padding-bottom: 4%;
+            margin-left: 14%;
+        }
+        .magem2{
+            margin-left: 1%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="corpo">
+        <header id=topo>
+            <h1>MY BLOG</h1>
+            <p>Welcome to the blog of
+                <span class="span1">unknown</span>
+            </p>
+        </header>
+        <div class="flex-container1">
+            <section id="sec1" class="flex-container">
+                <div class="bordas">
+                    <img src="../Imagens/Logo.jpg" alt="imagen1">
+                    <div id="div2">
+                        <h3 class="titulo1">TITLE HEADING </h3>
+                        <h5>Title description,
+                            <span class="sub1"> April 7, 2014</span>
+                        </h5>
+                    </div>
+                    <div>
+                        <p id="txt1">Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod
+                            placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies
+                            mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum,
+                            porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+                        <div class="flex-container1">
+                            <div>
+                                <input id="btn3" type="button" value="Read more>>">
+                            </div>
+                            <div class="divm">
+                                <p><strong>Comments</strong>
+                                    <span class="span1"> 0</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bordas">
+                    <img src="../Imagens/Logo.jpg" alt="imagen2">
+                    <div id="div2">
+                        <h3 class="titulo1">TITLE HEADING </h3>
+                        <h5>Title description,
+                            <span class="sub1"> April 2, 2014</span>
+                        </h5>
+                    </div>
+                    <div>
+                        <p id="txt1">Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod
+                            placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies
+                            mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum,
+                            porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+                        <div class="flex-container1">
+                            <div>
+                                <input id="btn3" type="button" value="Read more>>">
+                            </div>
+                            <div class="divm">
+                                <p><strong>Comments</strong>
+                                    <span id="span3"> 2</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="sec2" class="flex-container">
+                <div class="bordas">
+                    <img src="../Imagens/Logo.jpg" alt="imagen1">
+                    <div id="div2">
+                        <h3 class="titulo1">TITLE HEADING </h3>
+                    </div>
+                    <div>
+                        <p id="txt1">Just me, myself and I, exploring the universe of uknownment. I have a heart of love and a interest
+                            of lorem ipsum and mauris neque quam blog. I want to share my world with you..</p>
+                    </div>
+                </div>
+                <div class="bordas">
+                        <div class="bordas1"><h4>Popular Posts</h4></div>
+                        <div class="div4">
+                            <ul>
+                                <li><img id="list1" src="../Imagens/Logo.jpg" alt="imagem"><span class="magem2">Lorem</span><br><span class="magem1">Sed mattis nunc</span></li>
+                                <li><img id="list1" src="../Imagens/Logo.jpg" alt="imagem"><span class="magem2">Lorem</span><br><span class="magem1">Sed mattis nunc</span></li>
+                                <li><img id="list1" src="../Imagens/Logo.jpg" alt="imagem"><span class="magem2">Lorem</span><br><span class="magem1">Sed mattis nunc</span></li>
+                                <li><img id="list1" src="../Imagens/Logo.jpg" alt="imagem"><span class="magem2">Lorem</span><br><span class="magem1">Sed mattis nunc</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                <div class="bordas">
+                    <div class="bordas1"><h4>Tags</h4></div>
+                    <div class="div5">
+                        <span class="span1">Travel</span>
+                        <span class="span2">New York</span>
+                        <span class="span2">London</span>
+                        <span class="span2">IKEA</span>
+                        <span class="span2">NORWAY</span>
+                        <span class="span2">DIY</span>
+                        <span class="span2">Sports</span>
+                        <span class="span2">Ideas</span>
+                        <span class="span2">Sports</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer id=rodape>
+            <input id="btn1" type="button" value="Previous">
+            <input id="btn2" type="button" value="Next>>">
+            <p>Powered by
+                <a id="link1" target="_blank" href="https://www.w3schools.com/w3css/default.asp"> w3.css</a>
+            </p>
+        </footer>
+    </div>
+</body>
+
+</html>

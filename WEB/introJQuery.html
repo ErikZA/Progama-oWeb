@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Document</title>
+
+
+</head>
+
+<body>
+
+    <input type="button" value="JS" onclick="action()">
+    <input type="button" value="JQquery" id="btn">
+
+    <p id="text1">
+        <input type="text" id="nomeJS" placeholder="JS">
+    </p>
+
+    <p id="text2">
+        <input type="text" id="nomeJQ" placeholder="JQ">
+    </p>
+
+    <p id="text3">
+
+    </p>
+
+    <script>
+        function action() {
+            document.getElementById("text1").innerHTML = "Ola mundo";
+            document.getElementById("text1").style.color = "red";
+        }
+
+        function action2() {
+            document.getElementById("nomeJS").value = "Valor JS";
+        }
+
+        // $("#btn").click(function () {
+        //   $("#text2").text("Ola mundo Jquery");
+        //});
+
+        // $("#btn").click(function () {
+        //   $("#nomeJQ").val("Ola mundo Jquery");
+        //});
+
+            
+         $("#btn").click(function () {
+           $("#text1").css("color","blue");//altera a propiedade em CSS do elemto.
+        });
+        
+        $("#btn").click(function () {
+           //$("#nomeJQ").css("display","none");//altera a propiedade em CSS do elemto.
+           $("#nomeJQ").toggle();
+        });
+
+        $("#btn").click(function () {
+            //var valor = $("#nomeJQ").val();
+          //  $("#text3").text("O valor digitado foi: " + valor);
+         var value = $("#nomeJQ").attr("placeholder");//acessa o valor do elemento
+         $("#text3").text("O valor DO PLACE HOLDER foi: " + value);
+        });
+
+        
+
+        //$("#btn").click(function () {
+         //   var valor = $("#nomeJQ").val();
+        //    $("#text1").append(" O valor digitado foi: " + valor); // prepend - função que coloca a fase digitada antes do valor ja contido na variavel  
+        //});
+
+        
+    </script>
+
+</body>
+
+</html>

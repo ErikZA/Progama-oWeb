@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+
+        function validaSenha() {
+            var s1 = document.getElementById("txtSenha").value;
+            var s2 = document.getElementById("txtConfSenha").value;
+            if (s1 === s2) {
+                document.getElementById("buttonSalvar").removeAttribute("disabled");
+            } else {
+                alert("Senhas diferentes");
+            }
+        }
+
+        function valida() {
+            var inicia = document.getElementById("txtConfSenha");
+            inicia.addEventListener("blur", validaSenha, false);
+        }
+
+        document.addEventListener("DOMContentLoaded", valida, false);
+
+        function atualizaBanco(usuario, usuarios) {
+            usuarios.push(usuario);
+            localStorage.setItem("usuarioS", JSON.stringify(usuarios));
+        }
+
+        function gravaDados() {
+            var nome = document.getElementById("txtNome").value;
+            var sobrenome = document.getElementById("txtSobrenome").value;
+            var senha = document.getElementById("txtConfSenha").value;
+            var email = document.getElementById("txtEmail").value;
+
+
+            var usuario = {
+                nomeUsuario: nome,
+                sobrenomeUsuario: sobrenome,
+                senhaUsuario: senha,
+                emailUsuario: email
+            };
+
+            var banco = localStorage.getItem("usuarioS");
+            var usuarios = undefined;
+
+            if (banco != undefined)
+                usuarios = JSON.parse(banco);
+            else
+                usuarios = [];
+
+            alert("Cadastro Realizado");
+            atualizaBanco(usuario, usuarios);
+
+            document.getElementById("txtNome").value = "";
+            document.getElementById("txtSite").value = "";
+            document.getElementById("txtSenha").value = "";
+            document.getElementById("txtSobrenome").value = "";
+            document.getElementById("txtConfSenha").value = "";
+            document.getElementById("txtEmail").value = "";
+            document.getElementById("txtEmpresa").value = "";
+            document.getElementById("txtDD").value = "";
+            document.getElementById("txtFone").value = "";
+
+        }
+
+       /**/
+
+    </script>
+</head>
+
+<body>
+
+</body>
+<center>
+    <section>
+        <table>
+            <h3>Campos RadioButtons</h3>
+            <thead>
+                <tr>
+                    <th>
+                        <a href="http://nativeformelements.com/">Titulo</a> dos botoes</th>
+                    <th></th>
+                    <th colspan="4"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <strong>primeira linha Formulario</strong>
+                    </td>
+                    <td>
+                        <input type=radio>EMAIL</td>
+                    <td> </td>
+                    <td>
+                        <a href="http://nativeformelements.com/">lista de botes</a>
+                    </td>
+                    <td>|</td>
+                    <td>
+                        <a href="https://www.youtube.com/watch?v=4sB4wyFiuAs">giam e giovane</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type=radio>facebook</td>
+                    <td> </td>
+                    <td>
+                        <a href="http://nativeformelements.com/">lista de botes</a>
+                    </td>
+                    <td>|</td>
+                    <td>
+                        <a href="https://www.youtube.com/watch?v=4sB4wyFiuAs">giam e giovane</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type=radio>gmail</td>
+                    <td> </td>
+                    <td>
+                        <a href="http://nativeformelements.com/">lista de botes</a>
+                    </td>
+                    <td>|</td>
+                    <td>
+                        <a href="https://www.youtube.com/watch?v=4sB4wyFiuAs">giam e giovane</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3>Formulario simples</h3>
+
+        <form action="#">
+            <table id="tabelaID">
+                <thead>
+                    <tr>
+                        <th>
+                            Tabela para preencher formulario
+                        </th>
+                        <th colspan="2"></th>
+                    </tr>
+                </thead>
+                <!--<input type="hidden" value="erikzambeli@gmail.com" name="meuEmail">-->
+                <tbody>
+                    <tr>
+                        <td>Nome:</td>
+                        <td>
+                            <input id="txtNome" type=text name="txtNome" size="40">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sobrenome:</td>
+                        <td>
+                            <input id="txtSobrenome" type=text name="txtSobrenome" size="45">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Empresa:</td>
+                        <td>
+                            <input id="txtEmpresa" type=text name="txtEmpresa" size="40">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Senha:</td>
+                        <td>
+                            <input id="txtSenha" type="password" name="txtSobrenome" size="45">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Confirmar Senha:</td>
+                        <td>
+                            <input id="txtConfSenha" type="password" name="txtSobrenome" size="45">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cidade:</td>
+                        <td>
+                            <select id="txtCidade">
+                                <option>Nova fatima</option>
+                                <option>Congonhinhas</option>
+                                <option>Congonnhinhas</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Estado:</td>
+                        <td>
+                            <select id="txtEstado">
+                                <option>Mato groso</option>
+                                <option>São paulo</option>
+                                <option>Maranhao</option>
+                                <option>Piaui</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fone:</td>
+                        <td>
+                            <input id="txtDD" type=text name="txtDDD" size="2" maxlength="2">
+                            <input id="txtFone" type=text name="txtFone" size="25" maxlength="9">
+                            <legend>Numero mais DDD</legend>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>
+                            <input id="txtEmail" type="email" name="txtEmail">
+                            <legend>Não esquece do @@@@</legend>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Website:</td>
+                        <td>
+                            <input id="txtSite" type="email" name="txtEmail">
+                            <legend>Não esquece do @@@@</legend>
+                        </td>
+                    </tr>
+                    <!--<tr><td></td><td>NUmero mais DDD</td></tr>-->
+                </tbody>
+            </table>
+            <p></p>
+            <p></p>
+            <input style="margin-left: 0%;" type="button" disabled id="buttonSalvar" value="Enviar Cadastro" onclick="gravaDados()">
+        </form>
+    </section>
+</center>
+
+</html>

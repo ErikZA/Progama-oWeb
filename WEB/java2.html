@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+
+<script>
+function atualizaBanco(usuario, usuarios) {
+usuarios.push(usuario);
+localStorage.setItem("usuarioS", JSON.stringify(usuarios));
+}
+function gravaDados() {
+var nome = document.getElementById("txtNome").value;
+var idade = Number(document.getElementById("txtIdade").value);
+
+var usuario = {
+nomeUsuario: nome,
+idadeUsuario: idade
+};
+
+var banco = localStorage.getItem("usuarioS");
+var usuarios = undefined;
+
+if (banco != undefined)
+usuarios = JSON.parse(banco);
+else
+usuarios = [];
+atualizaBanco (usuario, usuarios);
+
+document.getElementById("txtNome").value = "";
+document.getElementById("txtIdade").value = "";
+}
+
+function atualizaBoasVindas() {
+var usuario = JSON.parse(localStorage.getItem("usuarioS"));
+
+var nome = usuario.nomeUsuario;
+var idade = usuario.idadeUsuario;
+
+document.getElementById("txt1").innerHTML = "Bem-vindo " + nome + "(" + idade + ") !";
+}
+</script>
+</head>
+
+<body onload="atualizaBoasVindas()">
+<p id="txt1">
+Bem-vindo!
+</p>
+<form action="#">
+<div>
+<label for="txtNome">Nome</label>
+<input type="text" id="txtNome">
+</div>
+
+<div>
+<label for="txtIdade">Idade</label>
+<input type="number" id="txtIdade">
+</div>
+
+<input type="button" value="Cadastrar" onclick="gravaDados()" />
+</form>
+</body>
+
+</html>

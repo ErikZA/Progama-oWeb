@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        function validaSenha() {
+            var s1 = document.getElementById("txtSenha").value;
+            if (s1 != null && s1 != undefined && s1 != "" && s1 != " ") {
+                document.getElementById("buttonLoad").removeAttribute("disabled");
+            } else {
+                alert("Entre com a Senha");
+            }
+            document.getElementById("txtSenha").innerHTML = "";
+        }
+
+        function valida() {
+            var inicia = document.getElementById("txtSenha");
+            inicia.addEventListener("blur", validaSenha, false);
+        }
+
+        document.addEventListener("DOMContentLoaded", valida, false);
+
+
+        var validaPage;
+        function mudarestados() {
+            var usuario = JSON.parse(localStorage.getItem("usuarioS"));
+            var nome = "";
+            var sobrenome = "";
+            var aux;
+            for (var i = 0; i < usuario.length; i++) {
+                aux = usuario[i];
+                if (document.getElementById("txtEmail").value === aux.emailUsuario &&
+                    document.getElementById("txtSenha").value === aux.senhaUsuario) {
+                    nome = aux.nomeUsuario;
+                    sobrenome = aux.sobrenomeUsuario;
+                    validaPage = true;
+                }
+            }
+            if(validaPage){
+            document.getElementById("txtNome").innerHTML = nome;
+            document.getElementById("txtSobrenome").innerHTML = sobrenome;
+            } else{
+                alert("Primeiro realize o Cadastro do usuario");
+                window.location.assign("file:///C:/Users/erik_/Desktop/Progama%C3%A7%C3%A3oWeb/WEB/Engajamento_6_1.html");
+            }
+
+        }
+        function listaDados() {
+            mudarestados();
+            document.getElementById("BoasVindas").style.display = "block";
+            document.getElementById("pedeSenha").style.display = "none";
+        }
+
+    </script>
+
+</head>
+
+
+
+<body>
+    <center>
+        <div id="pedeSenha" style="margin: 15%; margin-top: 02%; padding: 10%">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Email:</td>
+                        <td>
+                            <input id="txtEmail" type="email" name="txtEmail">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Senha:</td>
+                        <td>
+                            <input id="txtSenha" type="password" name="txtSenha">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <input disabled id="buttonLoad" type="button" value="Load" onclick="listaDados()">
+        </div>
+
+        <div id="BoasVindas" style="display: none">
+            <h1>Bem Viddo</h1>
+            <h3 id="txtNome">usuario</h3>
+            <h3 id="txtSobrenome">usuario</h3>
+        </div>
+    </center>
+</body>
+
+</html>

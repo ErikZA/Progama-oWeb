@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <form action="http//localhost:8090/form" method="GET">
+        <p>Nome</p>
+        <input type="text" placeholder="nome" id="txtNome">
+        <p>Idade</p>
+        <input type="text" placeholder="idade" id="txtIdade">
+        <p>Email</p>
+        <input type="text" placeholder="Email" id="txtEmail">
+        <p></p>
+        <input type="button" value="Enviar" id="btn">
+    </form>
+
+    <p id=""></p>
+    <p id="conteudo"></p>
+
+    <script>
+
+        //var valorNome = $("#txtNome").val();
+        //var valorIdade = $("#txtIdade").val();
+        //var dados = "txtNome=" + valorNome + "&txtIdade=" + valorIdade;
+
+        // $("#btn").click(function () {
+        //$("#dados").load("file.txt");
+        // var valorNome = $("#txtNome").val();
+        //   var valorIdade = $("#txtIdade").val();
+        // var dados = "txtNome=" + valorNome + "&txtIdade=" + valorIdade;
+        // $("#conteudo").load(
+        //       "http//localhost:8090/form", dados);
+        // });
+        $("#btn").click(function () {
+            //var valorNome = $("#txtNome").val();
+            //var valorIdade = $("#txtIdade").val();
+            //var dados = "txtNome=" + valorNome + "&txtIdade=" + valorIdade;
+
+            //$.get(
+            //  "http//localhost:8090/form",
+            // function (dados, status) {
+            //    $("#conteudo").text(dados);
+            //});
+            //$.post("http//localhost:9080/form",{
+            //  txtNome : $("#txtNome").val(),
+            //txtIdade :$("#txtIdade").val(),
+            //  },
+            // function(dados , status){
+            //   $("#conteudo").text(dados);
+            //});
+                /*$.get("https://jsonplaceholder.typicode.com/users", function (dados, status) {
+                    var vet = JSON.parse(JSON.stringify(dados));
+                    for(user of vet){
+                        $("#conteudo").append(user.name);
+                        $("#conteudo").append("<BR />");
+                    }
+                    
+            });*/
+            //$.get("MOCK_DATA.jason", function(dados,status){
+            //  var texto = JSON.stringify(dados);
+            //  var vet = JSON.parse(texto);
+            //for(pessoa of vet){
+            //  $("#conteudo").append(pessoa.email);
+            //$("#conteudo").append("<BR />");
+            //    }
+            // });
+            
+            $.get("https://jsonplaceholder.typicode.com/users", function (dados, status) {
+                    var vet = JSON.parse(JSON.stringify(dados));
+                    for(user of vet){
+                        if($("#txtEmail").val() === user.email){
+                        $("#conteudo").text("Os emails conferem PARABENS");
+                        break;
+                        }
+                        else
+                        $("#conteudo").text("Não encontrado");
+                    }
+                    
+            });
+
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>

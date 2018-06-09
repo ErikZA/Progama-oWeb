@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function boasVindas() {
+            var nomeUsuario = undefined;
+            for (cookie of document.cookie.split(";")) {
+                var cookieArray = cookie.split("=");
+
+                if (cookieArray[0] === "usuario")
+                nomeUsuario = cookieArray[1];
+
+            }
+            if (nomeUsuario != undefined)
+                document.getElementById("txt1").innerHTML = "Bem-vindo " + nomeUsuario + "!";
+        }
+        function gravaCookie() {
+            var nomeUsu = document.getElementById("txtNome").value;
+            document.cookie = "usuario" + nomeUsu;
+            document.getElementById("txtNome").value = "";
+
+            var idadeUsu = document.getElementById("txtIdade").value;
+            document.cookie = "idade" + idadeUsu;
+            document.getElementById("txtIdade").value = "";
+        }
+    </script>
+</head>
+
+<body onload="boasVindas()">
+    <p id="txt1">
+        Bem-Vindo
+    </p>
+    <form action="#">
+        <div>
+            <label for="txtNome">Nome</label>
+            <input type="text" id="txtNome">
+        </div>
+        <div><p></p></div>
+        <div>
+            <label for="txtIdade">Idade</label>
+            <input type="number" id="txtIdade">
+        </div>
+        <div><p></p></div>
+        <input type="button" value="Cadastrar" onclick="gravaCookie()">
+    </form>
+</body>
+
+</html>
