@@ -6,57 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
-    <script>
-        function validaSenha() {
-            var s1 = document.getElementById("txtSenha").value;
-            if (s1 != null && s1 != undefined && s1 != "" && s1 != " ") {
-                document.getElementById("buttonLoad").removeAttribute("disabled");
-            } else {
-                alert("Entre com a Senha");
-            }
-            document.getElementById("txtSenha").innerHTML = "";
-        }
-
-        function valida() {
-            var inicia = document.getElementById("txtSenha");
-            inicia.addEventListener("blur", validaSenha, false);
-        }
-
-        document.addEventListener("DOMContentLoaded", valida, false);
-
-
-        var validaPage;
-        function mudarestados() {
-            var usuario = JSON.parse(localStorage.getItem("usuarioS"));
-            var nome = "";
-            var sobrenome = "";
-            var aux;
-            for (var i = 0; i < usuario.length; i++) {
-                aux = usuario[i];
-                if (document.getElementById("txtEmail").value === aux.emailUsuario &&
-                    document.getElementById("txtSenha").value === aux.senhaUsuario) {
-                    nome = aux.nomeUsuario;
-                    sobrenome = aux.sobrenomeUsuario;
-                    validaPage = true;
-                }
-            }
-            if(validaPage){
-            document.getElementById("txtNome").innerHTML = nome;
-            document.getElementById("txtSobrenome").innerHTML = sobrenome;
-            } else{
-                alert("Primeiro realize o Cadastro do usuario");
-                window.location.assign("file:///C:/Users/erik_/Desktop/Progama%C3%A7%C3%A3oWeb/WEB/Engajamento_6_1.html");
-            }
-
-        }
-        function listaDados() {
-            mudarestados();
-            document.getElementById("BoasVindas").style.display = "block";
-            document.getElementById("pedeSenha").style.display = "none";
-        }
-
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 
@@ -81,7 +31,7 @@
                     </tr>
                 </tbody>
             </table>
-            <input disabled id="buttonLoad" type="button" value="Load" onclick="listaDados()">
+            <input disabled id="buttonLoad" type="button" value="Load">
         </div>
 
         <div id="BoasVindas" style="display: none">
@@ -90,6 +40,49 @@
             <h3 id="txtSobrenome">usuario</h3>
         </div>
     </center>
+
+
+    <script>
+
+        var validaPage;
+        $("#buttonLoad").click(function mudarestados() {
+            var usuario = JSON.parse(localStorage.getItem("usuarioS"));
+            var nome = "";
+            var sobrenome = "";
+            var aux;
+            for (var i = 0; i < usuario.length; i++) {
+                aux = usuario[i];
+                if (document.getElementById("txtEmail").value === aux.emailUsuario &&
+                    document.getElementById("txtSenha").value === aux.senhaUsuario) {
+                    nome = aux.nomeUsuario;
+                    sobrenome = aux.sobrenomeUsuario;
+                    validaPage = true;
+                }
+            }
+            if (validaPage) {
+                $("#txtNome").text(""+nome);
+                $("#txtSobrenome").text(""+sobrenome);
+                $("#BoasVindas").show();
+                $("#pedeSenha").hide();
+            } else {
+                alert("Primeiro realize o Cadastro do usuario");
+                window.location.assign("file:///C:/Users/erik_/Desktop/Progama%C3%A7%C3%A3oWeb/WEB/Engajamento_6_1.html");
+            }
+
+        });
+
+        $("#txtSenha").blur(
+            function () {
+                var senha1 = $("#txtSenha").val();
+                if (senha1 === "" || null) {
+                    alert("Entre com a senha");
+                } else {
+                    document.getElementById("buttonLoad").removeAttribute("disabled");
+                }
+            }
+        );
+
+    </script>
 </body>
 
 </html>

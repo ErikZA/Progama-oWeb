@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <p>Estados:</p>
+        <select id="selecionaEstado">
+            <option>Selecione um Estado</option>
+        </select>
+    </div>
+    <div id="divCidade" style="display: none;">
+        <p>Cidade:</p>
+        <select id="selecionaCidade">
+            <option>Selecione uma Cidade</option>
+        </select>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $.get("https://servicodados.ibge.gov.br/api/v1/localidades/estados", function (dados) {
+                var estados = JSON.parse(JSON.stringify(dados));
+                for (estado of estados) {
+                    $("#selecionaEstado").append(`<option id='${estado.id}'>${estado.nome}</option>`);
+                }
+            });
+        });
+
+        $("#selecionaEstado").change(function () {
+            $("#divCidade").hide();
+            var idEstado = $("#selecionaEstado").find(":selected").attr("id");
+            
+            $("#selecionaCidade").html(" <option>Selecione uma Cidade</option>");
+            $.get("https://servicodados.ibge.gov.br/api/v1/localidades/estados/" + idEstado + "/municipios", function (dados) {
+                var cidades = JSON.parse(JSON.stringify(dados));
+                for (cidade of cidades) {
+                    $("#selecionaCidade").append(`<option id='${cidade.id}'>${cidade.nome}</option>`);
+                }
+            });
+            $("#divCidade").css("display", "block");//ou utilizar o metodo show();
+        });
+
+    </script>
+</body>
+
+</html>

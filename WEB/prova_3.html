@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <form>
+        <div id="divNome">
+            <label for="txtNome">Nome Usuario</label>
+            <input type="text" id="txtName" placeholder="Informe  nome">
+        </div>
+
+        <p></p>
+
+        <div id="divEmail" style="display: none;">
+            <label for="txtTitulo">Email</label>
+            <input type="email" id="txtEmail" placeholder="Informe o email">
+        </div>
+
+        <p></p>
+
+        <div id="divSenha" style="display: none;">
+            <label for="txtSenha">Senha</label>
+            <input type="password" id="txtSenha">
+        </div>
+
+        <div id="divEstado" style="display: none;">
+            <p>Estados:</p>
+            <select id="selecionaEstado">
+                <option>Selecione um Estado</option>
+            </select>
+        </div>
+
+        <div id="divCidade" style="display: none;">
+            <p>Cidade:</p>
+            <select id="selecionaCidade">
+                <option>Selecione uma Cidade</option>
+            </select>
+        </div>
+
+        <p></p>
+
+        <input type="button" value="Postar" id="btnSalvar" disabled="true">
+
+    </form>
+
+
+    <script>
+
+        $("#selecionaEstado").change(function () {
+            $("#divCidade").hide();
+            var idEstado = $("#selecionaEstado").find(":selected").attr("id");
+
+            $("#selecionaCidade").html(" <option>Selecione uma Cidade</option>");
+            $.get("https://servicodados.ibge.gov.br/api/v1/localidades/estados/" + idEstado + "/municipios", function (dados) {
+                var cidades = JSON.parse(JSON.stringify(dados));
+                for (cidade of cidades) {
+                    $("#selecionaCidade").append(`<option id='${cidade.id}'>${cidade.nome}</option>`);
+                }
+            });
+            $("#divCidade").css("display", "block");
+        });
+
+        $("#txtName").blur(function () {
+            var name = $("#txtName").val();
+            var tamanho = name.length;
+            if (tamanho >= 5) {
+                $("#divEmail").show();
+                $("#txtName").attr("disabled", true);
+            }
+            else {
+                alert("Nome invalido - Entre com um nome maior que: " + name);
+            }
+        });
+
+        $("#txtEmail").blur(function () {
+            var email = $("#txtEmail").val();
+            if (email.match(/@/)) {
+                $("#divSenha").show();
+                $("#txtEmail").attr("disabled", true);
+            }
+            else {
+                alert("Email invalido - Entre com um email valido");
+            }
+        });
+
+        function tem_numeros(senha) {
+            var numeros = "0123456789";
+            for (i = 0; i < senha.length; i++) {
+                if (numeros.indexOf(senha.charAt(i), 0) != -1) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        $("#txtSenha").blur(function () {
+            var senha = $("#txtSenha").val();
+            if (tem_numeros(senha) && senha.length > 5) {
+                $("#divEstado").show();
+                $("#txtSenha").attr("disabled", true);
+            }
+            else {
+                alert("Senha invalida - Sua senha deve possuir no minimo 5 caracteres e Numeros");
+            }
+        });
+
+        $(document).ready(function () {
+            $.get("https://servicodados.ibge.gov.br/api/v1/localidades/estados", function (dados) {
+                var estados = JSON.parse(JSON.stringify(dados));
+                for (estado of estados) {
+                    $("#selecionaEstado").append(`<option id='${estado.id}'>${estado.nome}</option>`);
+                }
+            });
+        });
+
+        $("#btnSalvar").click(function () {
+            var nome = $("#txtName").val();
+            var cidade = $("#selecionaCidade").val();
+            var estado = $("#selecionaEstado").val();
+            var senha = $("#txtSenha").val();
+            var email = $("#txtEmail").val();
+            //console.log(nome + cidade + estado + senha + email);
+            var usuario = {
+                nomeUsuario: nome,
+                cidade: cidade,
+                senhaUsuario: senha,
+                emailUsuario: email,
+                estado: estado
+            };
+
+            window.localStorage.setItem("Prova_3", "Banco");
+            window.localStorage.setItem("Banco", usuario);
+           
+            $("#txtName").val("");
+            $("#divCidade").hide();
+            $("#divEmail").hide();
+            $("#divEstado").hide();
+            $("#divSenha").hide();
+            $("#btnSalvar").attr("disabled", true);
+        });
+
+        $("#selecionaCidade").change(function () {
+            var cidade = $("#selecionaCidade").val();
+            if (cidade != "Selecione uma Cidade")
+                $("#btnSalvar").attr("disabled", false);
+            else
+                $("#btnSalvar").attr("disabled", true);
+        });
+        $("#selecionaEstado").change(function () {
+            var estado = $("#selecionaEstado").val();
+            if (estado != "Selecione um Estado") {
+                $("#btnSalvar").attr("disabled", true);
+            }
+            else
+                $("#btnSalvar").attr("disabled", true);
+        });
+
+    </script>
+
+</body>
+
+</html>

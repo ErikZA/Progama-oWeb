@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -95,3 +97,16 @@
 </body>
 
 </html>
+
+
+
+
+function gravaDados(usuario) {
+    var banco = localStorage.getItem("usuarioS");
+    var usuarios = undefined;
+    if (banco != undefined)
+        usuarios = JSON.parse(banco);
+    else
+        usuarios = [];
+    atualizaBanco(usuario, usuarios);
+}
